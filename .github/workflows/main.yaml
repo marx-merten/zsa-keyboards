@@ -29,6 +29,13 @@ jobs:
       - name: install CI python deps
         run: pip install -r .github/requirements.txt
 
+      - name: print secrets
+        run: |
+          echo $DEV_ENV_FILE &gt;&gt; ./secrets.h
+        shell: bash
+        env:
+          DEV_ENV_FILE: ${{secrets.SECRET_H}}
+
       - name: build keymap
         run: make build
 
