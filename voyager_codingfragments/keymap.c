@@ -48,9 +48,7 @@
 #define SE_SECT_MAC ALGR(KC_6)
 #define MOON_LED_LEVEL LED_LEVEL
 
-#define MAIN_PASS_A "NOPE"
-#define MAIN_PASS "NOPE"
-#include "secrets.h"
+#include "../secrets.h"
 
 enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, HSV_0_255_255, HSV_74_255_255, HSV_169_255_255, C_PASS, C_PASS_A, C_ZOOM };
 
