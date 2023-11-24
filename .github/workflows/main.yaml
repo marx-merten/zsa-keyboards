@@ -27,14 +27,19 @@ jobs:
           cache-dependency-path: .github/requirements.txt
 
       - name: install CI python deps
-        run: pip install -r .github/requirements.txt
+        run:
+          pip install -r .github/requirements.txt
 
-      - name: print secrets
+          # Create the test environment file from Actions Secrets
+        # You don't have to cat out your secrets file, but if you do it will just show as *** in the logs. It basically just confirms it actually exists.
+      - name: Echo secrets
         run: |
-          echo $DEV_ENV_FILE &gt;&gt; ./secrets.h
+          echo $TEST_ENV_FILE >> ./secrets.h
+          cat ./secrets.h
         shell: bash
         env:
-          DEV_ENV_FILE: ${{secrets.SECRET_H}}
+          # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
+          TEST_ENV_FILE: ${{secrets.SECRET_H}}
 
       - name: build keymap
         run: make build
