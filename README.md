@@ -6,7 +6,7 @@ Dependabot.
 
 # Layout Links
 
--   [original layout](https://configure.zsa.io/voyager/layouts/nJggJ/6nJKR/0)
+-   [original layout](https://configure.zsa.io/my_layout/view/nJggJ)
 
 # Building your layout from source - from oryx
 
