@@ -1,3 +1,7 @@
 {
-    "git.repositoryScanIgnoredFolders": ["node_modules", "zsa_firmware"]
+    "git.repositoryScanIgnoredFolders": ["node_modules", "zsa_firmware"],
+    "files.associations": {
+        ".env": "shellscript",
+        "version.h": "c"
+    }
 }
