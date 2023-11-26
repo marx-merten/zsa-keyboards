@@ -2,6 +2,7 @@
     "git.repositoryScanIgnoredFolders": ["node_modules", "zsa_firmware"],
     "files.associations": {
         ".env": "shellscript",
-        "version.h": "c"
+        "codingfragments.h": "c",
+        "keymap_us_international.h": "c"
     }
 }
