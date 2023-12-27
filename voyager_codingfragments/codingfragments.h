@@ -15,6 +15,6 @@
 //                      Starting of your keymap.c file
 // =============================================================================
 
-enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, HSV_0_255_255, HSV_74_255_255, HSV_169_255_255, MAC_LOCK, C_PASS, C_PASS_A, C_ZOOM };
+enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, MAC_LOCK, C_PASS, C_PASS_A, C_ZOOM };
 
 bool process_record_user_generated(uint16_t keycode, keyrecord_t *record);
