@@ -15,6 +15,15 @@
 //                      Starting of your keymap.c file
 // =============================================================================
 
-enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, MAC_LOCK, C_PASS, C_PASS_A, C_ZOOM };
+// Critical changes to keymapp
+// ---------------------------------------
+//   [5] = LAYOUT_voyager(
+//     RESET,          LGUI(LCTL(KC_KP_1)),LGUI(LCTL(KC_KP_2)),LGUI(LCTL(KC_KP_3)),LGUI(LCTL(KC_KP_4)),LGUI(LCTL(KC_KP_5)),                                LGUI(LCTL(KC_KP_6)),LGUI(LCTL(KC_KP_7)),LGUI(LCTL(KC_KP_8)),LGUI(LCTL(KC_KP_9)),LGUI(LCTL(KC_KP_0)),LGUI(LCTL(KC_KP_PLUS)),
+//     KC_TRANSPARENT, C_PASS ,      C_PASS_A,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, MAC_LOCK,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+//     KC_CAPSLOCK,    CAPS_WORD,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(1),                                          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, MAC_LOCK,       KC_TRANSPARENT, KC_TRANSPARENT,
+//     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(0),                                          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+//                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+
+enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, ST_MACRO_0, MAC_LOCK, C_PASS, C_PASS_A, C_ZOOM };
 
 bool process_record_user_generated(uint16_t keycode, keyrecord_t *record);
