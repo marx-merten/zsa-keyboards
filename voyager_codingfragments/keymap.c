@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-const uint16_t PROGMEM combo0[] = {MT(MOD_RSFT, KC_N), MT(MOD_RGUI, KC_E), COMBO_END};
+const uint16_t PROGMEM combo0[] = { KC_L, KC_U, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_ESCAPE),
