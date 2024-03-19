@@ -26,3 +26,4 @@ firmware/voyager_codingfragments.bin: qmk_firmware/.build/voyager_codingfragment
 
 qmk_firmware/.build/voyager_codingfragments.bin: voyager_codingfragments qmk_setup
 	make -C qmk_firmware voyager:codingfragments
+	rm -rf qmk_firmware/keyboards/voyager/keymaps/codingfragments
