@@ -2,3 +2,4 @@
 voyager_codingfragments/secrets.h
 secrets.h
 firmware/*.bin
+qmk_firmware/lib/*
