@@ -2,6 +2,9 @@
 
 #include "../secrets.h"
 
+
+
+
 // Merged Source, please follow the following steps to merge your keymap with the latest version:
 // 0. add include codingfragments.h to your keymap.c
 // 1. Coppy the content of your keymap from codingfragment_custom.c into the keymapp

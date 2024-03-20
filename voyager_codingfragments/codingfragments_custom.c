@@ -1,8 +1,41 @@
 
 #include QMK_KEYBOARD_H
 #include "codingfragments.h"
+#include "features/achordion.h"
+
+
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
+
+// allow thumb keys without a timeout
+bool achordion_chord(uint16_t tap_hold_keycode,
+                                           keyrecord_t* tap_hold_record,
+                                           uint16_t other_keycode,
+                                           keyrecord_t* other_record) {
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 3) { return true; }
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+
+// general timeout for all other keys
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+    return 0;
+  }
+  switch (tap_hold_keycode) {
+    case MT(MOD_LGUI, KC_TAB):
+
+      return 0;  // Bypass Achordion for these keys.
+  }
+  return 750;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_achordion(keycode, record)) { return false; }
+
     switch (keycode) {
         case C_PASS:
             if (record->event.pressed) {

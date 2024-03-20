@@ -3,6 +3,8 @@
     "files.associations": {
         ".env": "shellscript",
         "codingfragments.h": "c",
-        "keymap_us_international.h": "c"
+        "keymap_us_international.h": "c",
+        "future": "c",
+        "regex": "c"
     }
 }
