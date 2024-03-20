@@ -17,3 +17,12 @@
 #define TAPPING_TERM_PER_KEY
 #define RGB_MATRIX_STARTUP_SPD 60
 
+// additional settings that are not in the default keymap or the Oryx configurator
+//
+
+#define PERMISSIVE_HOLD
+#define ACHORDION_STREAK
+
+
+// Features used in the keymap
+// https://getreuer.info/posts/keyboards/achordion/index.html
