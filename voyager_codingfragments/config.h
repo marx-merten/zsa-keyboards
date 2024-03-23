@@ -22,6 +22,7 @@
 
 #define PERMISSIVE_HOLD
 #define ACHORDION_STREAK
+#define QUICK_TAP_TERM_PER_KEY
 
 
 // Features used in the keymap

@@ -15,7 +15,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 3) { return true; }
+
+  //activate this if space key fires on streaks to often when typing words ending on the left hand
+//   if (other_keycode == LT(2,KC_SPACE)) { return false; }
+  if (tap_hold_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
@@ -33,6 +36,18 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   return 750;
 }
 
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
+  // If you quickly hold a tap-hold key after tapping it, the tap action is
+  // repeated. Key repeating is useful e.g. for Vim navigation keys, but can
+  // lead to missed triggers in fast typing. Here, returning 0 means we
+  // instead want to "force hold" and disable key repeating.
+  switch (keycode) {
+    case LT(2,KC_SPACE):
+      return 100;  // Enable key repeating.
+    default:
+      return QUICK_TAP_TERM;  // Otherwise, force hold and disable key repeating.
+  }
+}
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_achordion(keycode, record)) { return false; }
 
