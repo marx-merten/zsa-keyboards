@@ -4,3 +4,4 @@ secrets.h
 firmware/*.bin
 qmk_firmware/lib/*
 qmk_firmware/keyboards/voyager/keymaps/codingfragments
+doc
