@@ -18,6 +18,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
   //activate this if space key fires on streaks to often when typing words ending on the left hand
 //   if (other_keycode == LT(2,KC_SPACE)) { return false; }
+  if (other_keycode == LT(5,KC_BSPC)) { return true; }
   if (tap_hold_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
