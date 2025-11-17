@@ -29,5 +29,4 @@
 
 
 enum custom_keycodes { RGB_SLD = ML_SAFE_RANGE, ST_MACRO_0, MAC_LOCK, C_PASS, C_PASS_A, C_ZOOM };
-
 bool process_record_user_generated(uint16_t keycode, keyrecord_t *record);
