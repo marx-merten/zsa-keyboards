@@ -2,7 +2,7 @@ QMK_REPO ?= zsa/qmk_firmware
 QMK_BRANCH ?= firmware25
 
 
-LAYERS := L0 L1 L2 L3 L4 L5 L6 L7
+LAYERS := L0 L1 L2 L3 L4 L5 L6 L7 L8
 
 .PHONY: build
 build: qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments firmware/voyager_codingfragments.bin doc
@@ -15,20 +15,21 @@ clean:
 
 .PHONY: qmk_setup
 qmk_setup:
-	make -C qmk_firmware git-submodules
-	cd qmk_firmware && qmk setup $(QMK_REPO) -b $(QMK_BRANCH) -y
+	# make -C qmk_firmware git-submodules
+	mkdir -p qmk_firmware
+	cd qmk_firmware && qmk setup -H . $(QMK_REPO) -b $(QMK_BRANCH) -y
 
 
-qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments: voyager_codingfragments qmk_setup
+qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments: voyager_codingfragments qmk_firmware
 	rm -rf "$@"
 	cp -r "$<" "$@"
 
 
 
-firmware/voyager_codingfragments.bin: qmk_firmware/.build/voyager_codingfragments.bin
+firmware/voyager_codingfragments.bin: qmk_firmware/.build/zsa_voyager_codingfragments.bin
 	cp "$<" "$@"
 
-qmk_firmware/.build/voyager_codingfragments.bin: voyager_codingfragments qmk_setup
+qmk_firmware/.build/voyager_codingfragments.bin: voyager_codingfragments qmk_firmware/keyboards/zsa
 	make -C qmk_firmware zsa/voyager:codingfragments
 
 

@@ -1,56 +1,11 @@
 
 #include QMK_KEYBOARD_H
 #include "codingfragments.h"
-#include "features/achordion.h"
 
 
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
-
-// allow thumb keys without a timeout
-bool achordion_chord(uint16_t tap_hold_keycode,
-                                           keyrecord_t* tap_hold_record,
-                                           uint16_t other_keycode,
-                                           keyrecord_t* other_record) {
-
-  //activate this if space key fires on streaks to often when typing words ending on the left hand
-//   if (other_keycode == LT(2,KC_SPACE)) { return false; }
-  if (other_keycode == LT(5,KC_BSPC)) { return true; }
-  if (tap_hold_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-
-// general timeout for all other keys
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-    return 0;
-  }
-  switch (tap_hold_keycode) {
-    case MT(MOD_LGUI, KC_TAB):
-
-      return 0;  // Bypass Achordion for these keys.
-  }
-  return 750;
-}
-
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
-  // If you quickly hold a tap-hold key after tapping it, the tap action is
-  // repeated. Key repeating is useful e.g. for Vim navigation keys, but can
-  // lead to missed triggers in fast typing. Here, returning 0 means we
-  // instead want to "force hold" and disable key repeating.
-  switch (keycode) {
-    case LT(2,KC_SPACE):
-      return 100;  // Enable key repeating.
-    default:
-      return QUICK_TAP_TERM;  // Otherwise, force hold and disable key repeating.
-  }
-}
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_achordion(keycode, record)) { return false; }
+    /* if (!process_achordion(keycode, record)) { return false; } */
 
     switch (keycode) {
         case C_PASS:

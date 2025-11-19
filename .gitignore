@@ -3,5 +3,6 @@ voyager_codingfragments/secrets.h
 secrets.h
 firmware/*.bin
 qmk_firmware/lib/*
+qmk_firmware
 qmk_firmware/keyboards/voyager/keymaps/codingfragments
 doc
