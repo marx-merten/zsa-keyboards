@@ -35,4 +35,8 @@ jobs:
 
       - name: env
         run: ls -al;pwd
+      - name: prepare
+        run: qmk clone -b firmware25 zsa/qmk_firmware /qmk
+      - name: setup qmk
+        run: qmk setup -H /qmk -y
         
