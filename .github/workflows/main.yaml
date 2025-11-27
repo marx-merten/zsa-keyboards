@@ -21,17 +21,6 @@ jobs:
           # managed via their Makefile.
           submodules: true
 
-      # - uses: actions/setup-python@v4.7.1
-      #   with:
-      #     python-version: "3.11.x"
-      #     cache: pip
-      #     cache-dependency-path: .github/requirements.txt
-      # - name: toolchain
-      #   run: python3 -m pip install  qmk
-      #
-      # - name: install CI python deps
-      #   run: pip install -r .github/requirements.txt
-
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
@@ -44,23 +33,6 @@ jobs:
           # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
           SECRET_H: ${{secrets.SECRET_H}}
 
-      - name: init QMK
-        run: qmk setup zsa/qmk_firmware -b firmware25 -y
-
-      - name: prep  QMK
-        run: qmk env
-
-      - name: build
-        run: qmk compile -kb zsa/voyager -km default
-
-      # - name: python dependencies
-      #   run: python3 -m pip install -U -r /home/runner/work/zsa-keyboards/zsa-keyboards/qmk_firmware/requirements.txt
-
-      # - name: build keymap
-      #   run: make build
-      #
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: voyager_codingfragments_${{ steps.date.outputs.date }}.bin
-      #     path: zsa_firmware/.build/voyager_codingfragments.bin
-      #     retention-days: 3
+      - name: env
+        run: ls -al;pwd
+        
