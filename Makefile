@@ -29,7 +29,7 @@ qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments: voyager_codingfragme
 firmware/voyager_codingfragments.bin: qmk_firmware/.build/zsa_voyager_codingfragments.bin
 	cp "$<" "$@"
 
-qmk_firmware/.build/voyager_codingfragments.bin: voyager_codingfragments qmk_firmware/keyboards/zsa
+qmk_firmware/.build/zsa_voyager_codingfragments.bin: voyager_codingfragments qmk_firmware/keyboards/zsa
 	make -C qmk_firmware zsa/voyager:codingfragments
 
 
