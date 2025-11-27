@@ -21,7 +21,7 @@ jobs:
           submodules: true
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
+          python-version: "3.13"
       - name: install qmk
         run: |
           python -m pip install qmk
@@ -61,6 +61,3 @@ jobs:
           retention-days: 30
       - name: find
         run: find . -name "*.bin"
-
-
-          retention-days: 3
