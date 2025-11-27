@@ -21,11 +21,16 @@ jobs:
           # managed via their Makefile.
           submodules: true
 
-      - uses: actions/setup-python@v4.7.1
-        with:
-          python-version: "3.11.x"
-          cache: pip
-          cache-dependency-path: .github/requirements.txt
+      # - uses: actions/setup-python@v4.7.1
+      #   with:
+      #     python-version: "3.11.x"
+      #     cache: pip
+      #     cache-dependency-path: .github/requirements.txt
+      # - name: toolchain
+      #   run: python3 -m pip install  qmk
+      #
+      # - name: install CI python deps
+      #   run: pip install -r .github/requirements.txt
 
       - name: Get current date
         id: date
