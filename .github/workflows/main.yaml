@@ -47,8 +47,8 @@ jobs:
       - name: build prep
         run: make qmk_setup
 
-      - name: python dependencies
-        run: python3 -m pip install -U -r /home/runner/work/zsa-keyboards/zsa-keyboards/qmk_firmware/requirements.txt
+      # - name: python dependencies
+      #   run: python3 -m pip install -U -r /home/runner/work/zsa-keyboards/zsa-keyboards/qmk_firmware/requirements.txt
 
       - name: build keymap
         run: make build
