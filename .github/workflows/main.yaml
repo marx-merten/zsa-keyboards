@@ -25,6 +25,8 @@ jobs:
           python-version: "3.11.x"
           cache: pip
           cache-dependency-path: .github/requirements.txt
+      - name: toolchain
+        run: python3 -m pip install  qmk
 
       - name: install CI python deps
         run: pip install -r .github/requirements.txt
