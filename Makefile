@@ -1,5 +1,5 @@
-QMK_REPO ?= zsa/qmk_firmware
-QMK_BRANCH ?= firmware25
+QMK_REPO ?= vial-kb/vial-qmk
+QMK_BRANCH ?= vial
 
 
 LAYERS := L0 L1 L2 L3 L4 L5 L6 L7 L8
@@ -29,13 +29,13 @@ qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments: voyager_codingfragme
 firmware/voyager_codingfragments.bin: qmk_firmware/.build/zsa_voyager_codingfragments.bin
 	cp "$<" "$@"
 
-qmk_firmware/.build/voyager_codingfragments.bin: voyager_codingfragments qmk_firmware/keyboards/zsa
+qmk_firmware/.build/zsa_voyager_codingfragments.bin: voyager_codingfragments qmk_firmware/keyboards/zsa
 	make -C qmk_firmware zsa/voyager:codingfragments
 
 
 doc/codingfragments_qmk.json: qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments
 	mkdir -p doc
-	qmk c2json  -km codingfragments -kb voyager  --no-cpp qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments/keymap.c | jq > $@
+	qmk c2json  -km codingfragments -kb zsa/voyager  --no-cpp qmk_firmware/keyboards/zsa/voyager/keymaps/codingfragments/keymap.c | jq > $@
 
 doc/keymap.yaml: doc/codingfragments_qmk.json
 	keymap -c keymapper.conf parse -q doc/codingfragments_qmk.json >doc/keymap.yaml
