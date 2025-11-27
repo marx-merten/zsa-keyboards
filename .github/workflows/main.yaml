@@ -55,7 +55,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Voyager_codingfragments_${{ steps.date.outputs.date }}.bin
-          path: .qmk/.build/zsa_voyager_codingfragments.bin 
+          path: ./qmk/zsa_voyager_codingfragments.bin
           retention-days: 30
       - name: find
         run: find . -name "*.bin"
