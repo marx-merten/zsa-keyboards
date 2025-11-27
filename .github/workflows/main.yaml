@@ -20,6 +20,9 @@ jobs:
           # intentionally don't set it to "recursive" as zsa's submodules are
           # managed via their Makefile.
           submodules: true
+      - uses: actions/setup-python@v6
+          with:
+            python-version: '3.13' 
 
       - name: Get current date
         id: date
@@ -33,10 +36,6 @@ jobs:
           # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
           SECRET_H: ${{secrets.SECRET_H}}
 
-      - name: switch to python 3.12
-        run: |
-          uv python install 3.12 
-          uv python pin 3.12
       - name: env
         run: ls -al;pwd;python --version
 
