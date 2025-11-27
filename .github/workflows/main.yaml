@@ -45,5 +45,5 @@ jobs:
           mkdir -p /qmk/keyboards/zsa/voyager/keymaps/codingfragments/include
           cp secrets.h /qmk/keyboards/zsa/voyager/keymaps/codingfragments/include/
       - name: build
-        run: qmk compile -kb zsa/voyager -km codingfragments
+        run: qmk compile -kb zsa/voyager -km default
         
