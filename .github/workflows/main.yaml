@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+      - via-enabled
+      - via
 
   pull_request:
     branches:
@@ -40,7 +42,6 @@ jobs:
         env:
           # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
           SECRET_H: ${{secrets.SECRET_H}}
-
 
       - name: build prep
         run: make qmk_setup
