@@ -57,5 +57,7 @@ jobs:
           name: Voyager_codingfragments_${{ steps.date.outputs.date }}.bin
           path: .qmk/.build/zsa_voyager_codingfragments.bin 
           retention-days: 30
+      - name: find
+        run: find . -name "*.bin"
         
         
