@@ -50,6 +50,9 @@ jobs:
       - name: prep  QMK
         run: qmk env
 
+      - name: build
+        run: qmk compile -kb zsa/voyager
+
       # - name: python dependencies
       #   run: python3 -m pip install -U -r /home/runner/work/zsa-keyboards/zsa-keyboards/qmk_firmware/requirements.txt
 
