@@ -44,17 +44,17 @@ jobs:
           # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
           SECRET_H: ${{secrets.SECRET_H}}
 
-      - name: build prep
-        run: make qmk_setup
+      - name: prep  QMK
+        run: qmk doctor
 
       # - name: python dependencies
       #   run: python3 -m pip install -U -r /home/runner/work/zsa-keyboards/zsa-keyboards/qmk_firmware/requirements.txt
 
-      - name: build keymap
-        run: make build
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: voyager_codingfragments_${{ steps.date.outputs.date }}.bin
-          path: zsa_firmware/.build/voyager_codingfragments.bin
-          retention-days: 3
+      # - name: build keymap
+      #   run: make build
+      #
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: voyager_codingfragments_${{ steps.date.outputs.date }}.bin
+      #     path: zsa_firmware/.build/voyager_codingfragments.bin
+      #     retention-days: 3
