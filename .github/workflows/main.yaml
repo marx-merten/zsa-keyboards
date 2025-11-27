@@ -38,5 +38,15 @@ jobs:
 
       - name: env
         run: ls -al;pwd;python --version
-
+      - name: prepare
+        run: qmk clone -b firmware25 zsa/qmk_firmware /qmk
+      - name: setup qmk
+        run: qmk setup -H /qmk -y
+      - name: inject src
+        run: |
+          cp -rf voyager_codingfragments /qmk/keyboards/zsa/voyager/keymaps/codingfragments
+          mkdir -p /qmk/keyboards/zsa/voyager/keymaps/codingfragments/include
+          cp secrets.h /qmk/keyboards/zsa/voyager/keymaps/codingfragments/include/
+      - name: build
+        run: qmk compile -kb zsa/voyager -km default
         
