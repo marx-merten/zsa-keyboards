@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - main
-      - via-enabled
-      - via
 
   pull_request:
     branches:
@@ -14,22 +12,20 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
         with:
           # intentionally don't set it to "recursive" as zsa's submodules are
           # managed via their Makefile.
           submodules: true
-
-      - uses: actions/setup-python@v4.7.1
+      - uses: actions/setup-python@v6
         with:
-          python-version: "3.11.x"
-          cache: pip
-          cache-dependency-path: .github/requirements.txt
-
-      - name: install CI python deps
-        run: pip install -r .github/requirements.txt
+          python-version: '3.13'
+      - name: install qmk
+        run: |
+          python -m pip install qmk
+          mkdir -p ./qmk
 
       - name: Get current date
         id: date
@@ -43,14 +39,28 @@ jobs:
           # Feel free to rename this variable, but make sure to update it everywhere. You should paste your entire file in your secrets
           SECRET_H: ${{secrets.SECRET_H}}
 
-      - name: build prep
-        run: make qmk_setup
+      - name: env
+        run: ls -al;pwd;python --version
 
-      - name: build keymap
-        run: make build
+      - name: prepare
+        run: qmk clone -b vial vial-kb/vial-qmk ./qmk
 
+      - name: setup qmk
+        run: qmk setup -H ./qmk -y
+      - name: inject src
+        run: |
+          cp -rf voyager_codingfragments ./qmk/keyboards/zsa/voyager/keymaps/codingfragments
+          mkdir -p ./qmk/keyboards/zsa/voyager/keymaps/codingfragments/include
+          cp secrets.h ./qmk/keyboards/zsa/voyager/keymaps/codingfragments/include/
+      - name: build
+        run: qmk compile -kb zsa/voyager -km codingfragments
       - uses: actions/upload-artifact@v4
         with:
-          name: voyager_codingfragments_${{ steps.date.outputs.date }}.bin
-          path: zsa_firmware/.build/voyager_codingfragments.bin
+          name: Voyager_codingfragments_${{ steps.date.outputs.date }}.bin
+          path: ./qmk/zsa_voyager_codingfragments.bin
+          retention-days: 30
+      - name: find
+        run: find . -name "*.bin"
+
+
           retention-days: 3
