@@ -58,7 +58,7 @@ jobs:
         run: qmk compile -kb zsa/voyager -km codingfragments
       - uses: actions/upload-artifact@v4
         with:
-          name: Voyager_codingfragments_${{ steps.date.outputs.date }}.bin
+          name: Voyager_codingfragments_${{ steps.date.outputs.date }}_via.bin
           path: ./qmk/zsa_voyager_codingfragments.bin
           retention-days: 30
       - name: find
